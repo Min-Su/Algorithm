@@ -1,12 +1,27 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define MAX_SIZE 10000
 #define SWAP(x, y, t) ( (t)=(x), (x)=(y), (y)=(t) )
 
 void selection_sort(int list[], int n);
 
 int main()
 {
+	int i, n;
+	int list[MAX_SIZE];
+
+	n = MAX_SIZE;
+	for(i = 0; i < n; i++) {
+		list[i] = rand()%n;
+	}
+
+	selection_sort(list, n);
+
+	for(i = 0; i < n; i++) {
+		printf("%d ", list[i]);
+	}
+
 	return 0;
 }
 
