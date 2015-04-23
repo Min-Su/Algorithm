@@ -23,5 +23,13 @@ void inc_insertion_sort(int list[], int first, int last, int gap)
 
 void shell_sort(int list[], int n)
 {
-
+	int i, gap;
+	for(gap = n/2; gap > 0; gap = gap/2) {
+		if((gap%2) == 0) {
+			gap++;
+		}
+		for(i = 0; i < gap; i++) {
+			inc_insertion_sort(list, i, n-1, gap);
+		}
+	}
 }
