@@ -11,8 +11,15 @@ void merge(int list[], int left, int mid, int right);
 int main()
 {
 	int list[MAX_SIZE] = {3, 500, 77, 1, 0, 0, 326, 100, 17, 11};
+	int i;
 
-	
+	merge_sort(list, 0, 9);
+
+	for(i = 0; i < MAX_SIZE; i++) {
+		printf(" %d ", sorted[i]);
+	}
+
+	printf("\n");
 
 	return 0;
 }
@@ -25,7 +32,7 @@ void merge_sort(int list[], int left, int right)
 		mid = (left + right)/2;
 		merge_sort(list, left, mid);
 		merge_sort(list, mid+1, right);
-
+		merge(list, left, mid, right);
 	}
 }
 
