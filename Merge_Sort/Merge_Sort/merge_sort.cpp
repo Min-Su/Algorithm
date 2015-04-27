@@ -15,10 +15,17 @@ int main()
 
 void merge_sort(int list[], int left, int right)
 {
+	int mid;
 
+	if(left < right) {
+		mid = (left + right)/2;
+		merge_sort(list, left, mid);
+		merge_sort(list, mid+1, right);
+
+	}
 }
 
 void merge(int list[], int left, int mid, int right)
 {
-
+	
 }
