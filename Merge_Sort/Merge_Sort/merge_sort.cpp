@@ -10,6 +10,10 @@ void merge(int list[], int left, int mid, int right);
 
 int main()
 {
+	int list[MAX_SIZE] = {3, 500, 77, 1, 0, 0, 326, 100, 17, 11};
+
+	
+
 	return 0;
 }
 
