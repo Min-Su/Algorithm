@@ -27,5 +27,18 @@ void merge_sort(int list[], int left, int right)
 
 void merge(int list[], int left, int mid, int right)
 {
-	
+	int i, j, k, l;
+
+	i = left;
+	j = mid + 1;
+	k = left;
+
+	while(i <= mid && j <= right) {
+		if(list[i] <= list[j]) {
+			sorted[k++] = list[i++];
+		}
+		else {
+			sorted[k++] = list[j++];
+		}
+	}
 }
