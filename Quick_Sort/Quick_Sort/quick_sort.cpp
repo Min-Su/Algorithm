@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define SWAP(x, y, z) ((z) = (x), (y) = (x), (x) = (y))
+
 void quick_sort(int list[], int left, int right);
 int partition(int list[], int left, int right);
 
@@ -22,5 +24,24 @@ void quick_sort(int list[], int left, int right)
 
 int partition(int list[], int left, int right)
 {
+	int pivot, temp;
+	int low, high;
 
+	low = left + 1;
+	high = right;
+	pivot = list[left];
+
+	do {
+		while(pivot > list[low]) {
+			low++;
+		}
+		while(pivot < list[high]) {
+			high--;
+		}
+		if(low < high) {
+			SWAP(list[low], list[high], temp);
+		}
+	} while(low < high);
+
+	return 0;
 }
