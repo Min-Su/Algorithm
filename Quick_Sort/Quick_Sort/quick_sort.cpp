@@ -1,13 +1,29 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define SWAP(x, y, z) ((z) = (x), (y) = (x), (x) = (y))
+#define MAX_SIZE 10
+#define SWAP(x, y, z) ((z) = (x), (x) = (y), (y) = (z))
 
 void quick_sort(int list[], int left, int right);
 int partition(int list[], int left, int right);
 
 int main()
 {
+	int list[MAX_SIZE];
+	int i;
+
+	for(i = 0; i < MAX_SIZE; i++) {
+		list[i] = rand()%10;
+	}
+
+	quick_sort(list, 0, 9);
+
+	for(i = 0; i < MAX_SIZE; i++) {
+		printf(" %d ", list[i]);
+	}
+
+	printf("\n");
+
 	return 0;
 }
 
@@ -31,19 +47,19 @@ int partition(int list[], int left, int right)
 	high = right;
 	pivot = list[left];
 
-	do {
-		while(pivot > list[low]) {
+	while(low < high) {
+		while(low <= right && pivot >= list[low]) {
 			low++;
 		}
-		while(pivot < list[high]) {
+		while(high >= left && pivot <= list[high]) {
 			high--;
 		}
-		if(low < high) {
+		if(low < high && list[low] > list[high]) {
 			SWAP(list[low], list[high], temp);
 		}
-	} while(low < high);
+	} 
 
-	SWAP(list[low], list[high], temp);
+	SWAP(list[left], list[high], temp);
 
 	return high;
 }
