@@ -45,25 +45,32 @@ int partition(int list[], int left, int right)
 	int pivot, temp;
 	int low, high;
 
-	low = left + 1;
-	high = right;
-	pivot = list[left];
+	if(left < right) {
 
-	do {
-		do {
-			low++;
-		} while(low <= right && list[low] < pivot);
+		low = left;
+		high = right + 1;
+		pivot = list[left];
 
-		do {
-			high--;
-		} while(high >= left && list[high] > pivot);
+		while(low <= high)
+		{
+			do {
+				low++;
+			} while(list[low] < pivot);
 
-		if(low < high) {
-			SWAP(list[low], list[high], temp);
+			do {
+				high--;
+			} while(list[high] > pivot);
+
+			if(low < high) {
+				SWAP(list[low], list[high], temp);
+			}
+			else {
+				break;
+			}
 		}
-	} while(low < high);
 
-	SWAP(list[left], list[high], temp);
+		SWAP(list[high], list[left], temp);
+	}
 
 	return high;
 }
