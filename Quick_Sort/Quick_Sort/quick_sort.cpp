@@ -14,8 +14,10 @@ int main()
 
 	for(i = 0; i < MAX_SIZE; i++) {
 		list[i] = rand()%10;
+		printf(" %d ", list[i]);
 	}
 
+	printf("\n--------------------------------------sorting--------------------------------\n");
 	quick_sort(list, 0, 9);
 
 	for(i = 0; i < MAX_SIZE; i++) {
@@ -47,17 +49,19 @@ int partition(int list[], int left, int right)
 	high = right;
 	pivot = list[left];
 
-	while(low < high) {
-		while(low <= right && pivot >= list[low]) {
+	do {
+		do {
 			low++;
-		}
-		while(high >= left && pivot <= list[high]) {
+		} while(low <= right && list[low] < pivot);
+
+		do {
 			high--;
-		}
-		if(low < high && list[low] > list[high]) {
+		} while(high >= left && list[high] > pivot);
+
+		if(low < high) {
 			SWAP(list[low], list[high], temp);
 		}
-	} 
+	} while(low < high);
 
 	SWAP(list[left], list[high], temp);
 
