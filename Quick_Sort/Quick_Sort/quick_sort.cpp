@@ -43,5 +43,7 @@ int partition(int list[], int left, int right)
 		}
 	} while(low < high);
 
-	return 0;
+	SWAP(list[low], list[high], temp);
+
+	return high;
 }
